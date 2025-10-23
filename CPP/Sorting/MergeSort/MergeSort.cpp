@@ -12,8 +12,8 @@ void merge(int arr[], int left, int mid1, int mid2, int right) {
     vector<int> leftArr(size1), midArr(size2), rightArr(size3);
 
    
-    for (int i = 0; i < size1; i++) {
-        leftArr[i] = arr[left + i];
+    for (int j = 0; j < size1; j++) {
+        leftArr[j] = arr[left + j];
     }
     for (int i = 0; i < size2; i++) {
         midArr[i] = arr[mid1 + 1 + i];
@@ -22,12 +22,12 @@ void merge(int arr[], int left, int mid1, int mid2, int right) {
         rightArr[i] = arr[mid2 + 1 + i];
     }
 
-    
+ 
     int i = 0, j = 0, k = 0, index = left;
     while (i < size1 || j < size2 || k < size3) {
         int minValue = INT_MAX, minIdx = -1;
 
-        
+       
         if (i < size1 && leftArr[i] < minValue) {
             minValue = leftArr[i];
             minIdx = 0;
@@ -41,7 +41,7 @@ void merge(int arr[], int left, int mid1, int mid2, int right) {
             minIdx = 2;
         }
 
-        
+       
         if (minIdx == 0) {
             arr[index++] = leftArr[i++];
         } else if (minIdx == 1) {
@@ -54,7 +54,7 @@ void merge(int arr[], int left, int mid1, int mid2, int right) {
 
 void threeWayMergeSort(int arr[], int left, int right) {
 
- 
+    
     if (left >= right) {
         return;
     }
@@ -66,18 +66,19 @@ void threeWayMergeSort(int arr[], int left, int right) {
     
     threeWayMergeSort(arr, left, mid1);
 
-    
+   
     threeWayMergeSort(arr, mid1 + 1, mid2);
 
-   
+    
     threeWayMergeSort(arr, mid2 + 1, right);
 
+   
     merge(arr, left, mid1, mid2, right);
 }
 
 int main() {
 
-    
+   
     int arr[] = {5, 2, 9, 1, 6, 3, 8, 4, 7};
 
     
